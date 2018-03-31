@@ -7,3 +7,18 @@
         transform: translate(-50%);
     }
 }
+
+@media screen and (max-width: 767px) {
+    .app {
+        .form {
+            width: 100%;
+          }
+    } 
+  }
+  @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .app {
+        .form {
+            width: 100%;
+        }
+    } 
+  }
