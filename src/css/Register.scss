@@ -15,13 +15,36 @@ section {
         border-radius: 2px;
         text-indent: 35px;
       }
-      span {
+      .icon {
         position: relative;
         left: 5%;
+      }
+      .error-icon {
+        right: 20%;
+        position: absolute;
+        margin-top: 1%;
+      }
+    }
+    .errors {
+      color: red;
+      input {
+        border: 1px solid red;
       }
     }
     .condition {
       text-align: center;
+    }
+    .errors-list {
+      padding-bottom: 5px;
+      .error {
+        width: 60%;
+        min-height: 20px;
+        background: red;
+        color: white;
+        text-align: left;
+        display: inline-block;
+        margin-left: 5%;
+      }
     }
     .register-button {
       .submit {
@@ -55,8 +78,11 @@ section::after{
   section {
     form {
       .form-fields {
-        span { 
+        .icon { 
           left: 25px;
+        }
+        .error-icon { 
+          right: 13%;
         }
       }
     } 
@@ -75,8 +101,11 @@ section::after{
   section {
     form {
       .form-fields {
-        span { 
+        .icon { 
           left: 25px;
+        }
+        .error-icon { 
+          right: 155px;
         }
       }
     } 
