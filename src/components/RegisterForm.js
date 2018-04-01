@@ -30,17 +30,24 @@ class RegisterationForm extends Component {
       firstName: {
         format: {
           pattern: "[A-Za-z]+"
+        },
+        presence: {
+          allowEmpty: false
         }
       },
       lastName: {
         format: {
           pattern: "[A-Za-z]+"
+        },
+        presence: {
+          allowEmpty: false
         }
       },
       pin: {
         format: {
           pattern: "[0-9]+"
-        }
+        },
+        length: {is: 6}
       },
       email: {
         email: true
