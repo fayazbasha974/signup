@@ -179,7 +179,7 @@ class RegisterationForm extends Component {
               <button className="submit" disabled={formErrors} onClick={this.submitForm}>Register</button>
             </div>
             <div className="navigate-to-sigin">
-              <p>Alread have an account?<b>SIGN IN</b></p>
+              <p>Already have an account?<b>SIGN IN</b></p>
             </div>
           </form>
         </section>
