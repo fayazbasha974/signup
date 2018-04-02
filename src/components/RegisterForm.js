@@ -178,6 +178,9 @@ class RegisterationForm extends Component {
             <div className="register-button">
               <button className="submit" disabled={formErrors} onClick={this.submitForm}>Register</button>
             </div>
+            <div className="navigate-to-sigin">
+              <p>Alread have an account?<b>SIGN IN</b></p>
+            </div>
           </form>
         </section>
       </React.Fragment>
