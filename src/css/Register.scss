@@ -63,6 +63,15 @@ section {
         cursor: pointer;
       }
     }
+    .navigate-to-sigin {
+      p {
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
 

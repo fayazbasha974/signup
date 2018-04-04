@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as FontAwesome from 'react-icons/lib/fa';
 import validate from "validate.js";
+import { Link } from 'react-router-dom';
 
 import '../css/Register.scss';
 
@@ -179,7 +180,7 @@ class RegisterationForm extends Component {
               <button className="submit" disabled={formErrors} onClick={this.submitForm}>Register</button>
             </div>
             <div className="navigate-to-sigin">
-              <p>Already have an account?<b>SIGN IN</b></p>
+              <p>Already have an account?<b><Link to="/">SIGN IN</Link></b></p>
             </div>
           </form>
         </section>
