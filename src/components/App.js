@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import RegisterationForm from './RegisterForm';
 import '../css/App.scss';
-
+import LoginForm from './LoginForm';
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
-        <div className="form">
-          <RegisterationForm/>
-        </div>
-      </div>
+      <React.Fragment>
+        {/* <div className="app">
+          <div className="form">
+            <RegisterationForm/>
+            <LoginForm/>
+          </div>
+        </div> */}
+        <Route exact path="/" component={LoginForm}/>
+        <Route path="/signup" component={RegisterationForm}/>        
+      </React.Fragment>
     )
   }
 }

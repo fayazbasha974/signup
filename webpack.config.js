@@ -22,7 +22,9 @@ module.exports = {
   mode: "production",
   devServer: {
     port: 8000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: "localhost",
+    https: true
   },
   performance: { hints: false },
   plugins: [
