@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React from "react";
+import { Route } from "react-router-dom";
 
-import RegisterationForm from './RegisterForm';
-import '../css/App.scss';
-import LoginForm from './LoginForm';
+import RegisterationForm from "./RegisterForm";
+import "../css/App.scss";
+import LoginForm from "./LoginForm";
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <React.Fragment>
