@@ -7,7 +7,15 @@ import { Link } from "react-router-dom";
 import "../css/Login.scss";
 
 class LoginForm extends Component {
-
+    constructor(){
+      super();
+      this.state = {
+        username: "",
+        password: "",
+        usernameValid: false,
+        passwordValid:false
+      };
+    }
     responseFacebook = (response) => {
       console.log(response);
     }
@@ -16,11 +24,41 @@ class LoginForm extends Component {
       console.log(response);
     }
 
-    componentClicked = () => {
+    componentClicked = (response) => {
+      console.log(response);
+      
+    };
 
+    validationCheck = (name) => {
+      let usernameValid = this.state.usernameValid;
+      let passwordValid = this.state.passwordValid;
+      if(name === "username") {
+        usernameValid = this.state.username.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? true : false;
+      }else if(name === "password") {
+        passwordValid = this.state.password.length >= 6 ? true : false;
+      }
+      
+      this.setState({
+        usernameValid: usernameValid,
+        passwordValid: passwordValid
+      });
+    };
+
+    handleChanges = (e) => {
+      let name = e.target.name;
+      this.setState({
+        [e.target.name]: e.target.value
+      },()=>{this.validationCheck(name)})
+    };
+
+    submit = (e) => {
+      e.preventDefault();
+      console.log(this.state)
     };
 
   render() {
+    const usernameValidation = this.state.username.length > 0 && !this.state.usernameValid;
+    const passwordValidation = this.state.password.length > 0 && !this.state.passwordValid;
     return (
       <React.Fragment>
         <section>
@@ -43,21 +81,29 @@ class LoginForm extends Component {
             />
           </div>
           <div className="manual-login">
-            <h3 className="title">Login with your credentials!!!</h3>
-            <div className="input-field">
-              <span className="icon"><FontAwesome.FaUser /></span>
-              <input type="text" name="username" placeholder="Username"/>
-            </div>
-            <div className="input-field">
-              <span className="icon"><FontAwesome.FaUnlockAlt /></span>
-              <input type="text" name="password" placeholder="Password"/>
-            </div>
-            <div className="input-field">
-              <button className="submit-button">Login</button>
-            </div>
-            <div className="nav-to-signup">
-              <p>Not yet registered? <Link to="/signup">SIGN UP</Link></p>
-            </div>
+            <form>
+              <h3 className="title">Login with your credentials!!!</h3>
+              <div className={"input-field" + " "+ (usernameValidation ? "errors" : "")}>
+                <span className="icon"><FontAwesome.FaUser /></span>
+                <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges}/>
+              </div>
+              <div className={"input-field" + " "+ (passwordValidation ? "errors" : "")}>
+                <span className="icon"><FontAwesome.FaUnlockAlt /></span>
+                <input type="password"  name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges}/>
+              </div>
+              {passwordValidation || usernameValidation ? 
+                <div className="error-msg-section">
+                    <span>{ usernameValidation ? "Invalid email id" : ""}</span><br/>
+                    <span>{passwordValidation ? "Password should contain minimum of 6 characters" : ""}</span>
+                </div>: ""
+              }
+              <div className="input-field">
+                <button className="submit-button" onClick={this.submit} disabled={!this.state.passwordValid || !this.state.usernameValid}>Login</button>
+              </div>
+              <div className="nav-to-signup">
+                <p>Not yet registered? <Link to="/signup">SIGN UP</Link></p>
+              </div>
+            </form>
           </div>
         </section>
       </React.Fragment>
