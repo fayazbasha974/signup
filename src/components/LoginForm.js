@@ -3,6 +3,10 @@ import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import * as FontAwesome from "react-icons/lib/fa";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { Login } from "../actions/LoginActions";
 
 import "../css/Login.scss";
 
@@ -17,16 +21,15 @@ class LoginForm extends Component {
       };
     }
     responseFacebook = (response) => {
-      console.log(response);
+      this.props.Login(response,"facebook",this.props);
     }
 
     responseGoogle = (response) => {
-      console.log(response);
+      this.props.Login(response,"google",this.props);
     }
 
     componentClicked = (response) => {
       console.log(response);
-      
     };
 
     validationCheck = (name) => {
@@ -53,7 +56,11 @@ class LoginForm extends Component {
 
     submit = (e) => {
       e.preventDefault();
-      console.log(this.state)
+      let payload = {
+        email: this.state.username,
+        password: this.state.password
+      };
+      this.props.Login(payload,"manual",this.props);
     };
 
   render() {
@@ -111,4 +118,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+Login.propTypes = {
+  Login: PropTypes.func
+}
+
+export default connect(null,{Login})(LoginForm);

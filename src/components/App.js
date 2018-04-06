@@ -1,9 +1,15 @@
 import React from "react";
 import { Route } from "react-router-dom";
+// Alerts
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
 
 import RegisterationForm from "./RegisterForm";
-import "../css/App.scss";
 import LoginForm from "./LoginForm";
+import Dashboard from "./dashboard/dashboard";
+
+import "../css/App.scss";
 
 class App extends React.Component {
   render() {
@@ -16,7 +22,9 @@ class App extends React.Component {
           </div>
         </div> */}
         <Route exact path="/" component={LoginForm}/>
-        <Route path="/signup" component={RegisterationForm}/>        
+        <Route path="/signup" component={RegisterationForm}/>
+        <Route path="/dashboard" component={Dashboard}/>
+        <Alert stack={{limit: 3}} timeout={5000} />
       </React.Fragment>
     )
   }
