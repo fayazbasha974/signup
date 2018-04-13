@@ -1,0 +1,17 @@
+.user-details {
+    margin: auto;
+    width: 50%;
+    .user-image {
+        img {
+            width: 50%;
+            height: 350px;
+            position: relative;
+            left: 25%;
+        }
+    }
+    .personal-details {
+        width: 50%;
+        position: relative;
+        left: 25%;
+    }
+}

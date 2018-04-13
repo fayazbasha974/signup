@@ -13,7 +13,7 @@ export const Login = (data,type,context) => (dispatch) => {
                     data: res.data.data
                 });
             localStorage.setItem("userDetails",JSON.stringify(res.data.data));
-            context.history.push("/dashboard");
+            context.history.push("/dashboard/userdetails");
             }else {
                 Alert.error("Invalid user details",ALERT_CONFIG);
                 context.history.push("/");
@@ -50,6 +50,6 @@ export const Login = (data,type,context) => (dispatch) => {
             type: USER_LOGIN,
             data: responseData
         });
-        context.history.push("/dashboard");
+        context.history.push("/dashboard/userdetails");
     }
 };
